@@ -30,20 +30,43 @@ fi
 ################################################################################ 
 
 # Create /tmp as the work dir
+
 mkdir -p tmp
-  
-if [ $getAllFiles == 1 ]; then
+fileError=0
+
+if [ $getAllFiles == 1 ]; then  
   for abc_file in *.abc; do
     filename=$(basename -- "$abc_file")
     file="${filename%.*}"
     echo "-> "${file}
-    rm -f ${file}.pdf
-    cp ${file}.* tmp/.    
+
+    if [  -f "${file}.info" ]; then
+      rm -f ${file}.pdf
+      cp ${file}.* tmp/.    
+    else
+      echo "File Error: ${file}.info for ${file}.abc does not exist!"
+      fileError=1
+    fi
   done
 
 else
-  rm -f ${1}.pdf
-  cp ${1}.* tmp/.
+  if [ -f "${1}.abc" ]; then
+    if [ -f "${1}.info" ]; then
+      rm -f ${1}.pdf
+      cp ${1}.* tmp/.
+    else
+      echo "File Error: ${1}.info for ${1}.abc does not exist!"
+      fileError=1
+    fi
+  else
+    echo "File Error: ${1}.abc does not exist!"
+    fileError=1
+  fi
+fi
+
+if [ $fileError == 1 ]; then
+  rm -rf tmp
+  exit 1
 fi
 
 ################################################################################
