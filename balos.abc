@@ -1,0 +1,26 @@
+X:1
+L:1/8
+M:4/4
+I:linebreak <EOL>
+K:C
+V:1
+ G,2 A,B, CDEF | G>A GF E^D E2 | G,2 A,B, CDEF | G2 A2 B2 c2 |
+ G,2 A,B, CDEF | G>A GF E^D E2 | G2 AG FE^DE | C2 G,2 C2 z2 | 
+ G2 AB cdef | g>^f ag e^d!4!ec | G2 AB cdef | g2 !1!a2 b2 c'2 |
+ !1!G2 !0!AB cdef | g>a gf e^d!0!ef | g^fag =fe^de | c2 z4 !3!c'2 |:
+ c'>d' c'_b bc'ba | !3!a_bag g^fga | !2!_b>c' ba aba!2!g | g>a gf fefg |
+ a>_b ag gagf | fgfe e^d!0!e^f | g^fag =fe^de |1 c>d ef ga_b=b :|2 c3 c c2 c2 |:
+ E>F ^FG E=F^FG | A>B AG FE F2 | D>E FE DEF^F | G>!4!A GF E^D E2 |
+ e>f ^fg e=f^fg | a>_b ag fef^f | g>^f ag =fe^de |1 c3 c c2 c2 :|2
+ c2 _ba agg^f || g>a gf fee^d | e(!2!bd')(!1!^f g)(^de)(B | c2) _BA GFED | C3 C C2 C2 | 
+ e8 | e4 d2 c2 |: !3!f2 e6 | 
+ z2 !4!_ba agg^f | g>a gf fee^d | e(!2!bc')(!1!^f g)(^de)(B |1 c2) (Bc defg) | a6 g2 | f4 g4 | e8 :|2
+ cdef g^deB | !4!e8 | e4 d2 c2 | f4 e4 ||
+ z2 !4!_ba agg^f | g>_b gf fee^d | e(!2!bc')(!1!^f g)(^de)(B | c2) (Bc defg) | a6 g2 | f4 g4 | e8 |:
+ _bagf e^dec | _bagf e^dec | _bagf e^dec | ^f2 g2 ^F2 G2 | 
+ _bagf e^dec | _bagf e^de^f | g^fag =fe^de | c3 c c2 c2 |
+ _BAGF E^DEC | _BAGF E^DEC | _BAGF E^DEC | ^F2 G2 ^f2 g2 |
+ _BAGF E^DEC | _BAGF E^DE^F | G^FAG =FE^DE | C3 C C2 g2 |:
+ ^fgag e2 g2 | ^fgag e2 g2 | !3!c'b c'2 b2 _b2 | a6 u!1!f2 | 
+ efgf d2 f2 | efgf d2 g2 | ^fgag =fe^de |1 c3 c c2 g2 :|2
+ c2 ef g^fg=f || e^dec Bc=dB | c2 _ba gfed | c2 de fg!1!ab | c'4 c4 |] 

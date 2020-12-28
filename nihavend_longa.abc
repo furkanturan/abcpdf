@@ -1,0 +1,16 @@
+C: Kevser Hanim
+X:1
+L:1/16
+M:2/4
+I:linebreak <EOL>
+K:F
+V:1
+ y     DEFG ABAG | A2(FG) EGFE :| yyyyyyyyyyyyyyyyyyyy
+ yyy   DEFG AB^cd | efed ^cBAG | yyyyyyyyyyyyyyyyyyyy
+ yyy   ABGA B^cAB | ^cdBc decd | yyyyyyyyyyyyyyyyyyyy
+ yyy   efed ^cdef | gfed ^cBAG | ABAG FGFE | D2A,2 D4!D.C.! |:S
+      A2B2 c2d2 | cBBA AGGF :| yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+ yyy  A2B2 c2d2 | cBBA AGGF | yyyyy ABAG FGFE | D2A,2 D4!D.S.! |:
+      A2^G2 A4 | FGFE D4 | d2^c2 d4 | BcBA G4 |
+ yyy  efed ded^c | ^cdcB BcBA |1 ABAG FEFG | ABAG FED2 :|2
+ yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy ABAG FGFE | D2A,2 D4 yyy!D.S.! |] 
