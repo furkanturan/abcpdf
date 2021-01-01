@@ -35,10 +35,12 @@ tmplate = Template(tmpfile.read())
 tmpfile.close()
 
 res = tmplate.substitute(
-    name  = info_fields[0][1], 
-    date  = info_fields[1][1],
-    scale = info_fields[2][1],
-    files = ','.join(svgfiles))
+  name  = info_fields[0][1], 
+  date  = info_fields[1][1],
+  scale = info_fields[2][1],
+  link  = "furkanturan.com/listen/index.html?sheet="+
+          info_fields[0][1].replace(" ", "\_"),
+  files = ','.join(svgfiles))
 
 f = open(abcfile+".tex", "w")
 f.write(res)
