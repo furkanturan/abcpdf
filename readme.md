@@ -1,19 +1,19 @@
 # ABC &rightarrow; LaTeX &rightarrow; PDF
 
-This is a simple tool to convert ABC (formatted music) to PDF (music sheet). First, it embeds them into a LaTeX file as vector images, then compiles the LaTeX files to PDF. 
+This repo provides a set of scripts to convert ABC (formatted music) to PDF (music sheet). First, it embeds ABC sheet into a LaTeX file as vector image(s), then compiles the LaTeX files to PDF. 
 
-It also creates produces inpput file for the [abclisten](https://github.com/furkanturan/abclisten) subrepository, which turns the ABC files into online sheet music and make them playable.
+It also produces input file for the [abclisten](https://github.com/furkanturan/abclisten) subrepository, which turns the ABC files into an online sheet music and make them playable.
 
 ## How to use?
 
-* Type your music sheet using abc notation, and add it to the main directory with `.abc` extension.
+* Type a music sheet using ABC notation, and add it to the main directory with `.abc` extension.
 
-* Provide extra info in a file having the same name as the `.abc` file, but with an `.info` extention. For now, only several info fields are supported. 
+* Provide extra info in a file having the same name as the `.abc` file, but with an `.info` extention. For now, only several info fields are supported.
     
   * A title to the PDF.
-  * The date it is added. You can leave it empty.
+  * The date it is added. For me, this is the date, on which I started practicing the specific song.
   * A scaling factor for the sheet in the PDF file.
-  * If the `.abc` file does not set the tempo, you can provide the tempo information here. This will not be printed to the TEX file, but will be used if the file is compiled for the listener.
+  * If the `.abc` file does not set the tempo, this field can provide the tempo information. This will not be printed to the TEX file, but will be used if the file is compiled for the [abclisten](https://github.com/furkanturan/abclisten).
 
   You can create the info file as:
 
@@ -33,7 +33,7 @@ It also creates produces inpput file for the [abclisten](https://github.com/furk
 ## Dependencies
 
 It uses:
-* `abcm2ps` for converting `abc` sheet into `svg` images
+* `abcm2ps` to convert `abc` sheet into `svg` images
 * `inkscape` to convert `svg` images to `pdf`
 * `python3` to prepare `tex` files that include the `pdf` sheet input
 * `pdflatex` to compile the `tex` files into `pdf` sheet
