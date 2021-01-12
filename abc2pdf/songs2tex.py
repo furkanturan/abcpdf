@@ -1,5 +1,6 @@
 import sys
 import glob, os
+import json
 from string import Template
 
 abcfile = sys.argv[1]
@@ -17,16 +18,8 @@ print(','.join(svgfiles))
 
 ################################################################################
 
-info_fields = [ ["title", ""],
-                ["date",  ""],
-                ["scale", ""]]
-
-infofile = open(abcfile+".info", "r")
-for line in infofile.readlines():
-  for field in info_fields:
-    if line.find(field[0])!=-1:
-      field[1] = line[len(field[0])+1:].strip()
-infofile.close()
+with open(abcfile+".json") as f:
+  settings = json.load(f)
 
 ################################################################################
 
@@ -35,11 +28,11 @@ tmplate = Template(tmpfile.read())
 tmpfile.close()
 
 res = tmplate.substitute(
-  name  = info_fields[0][1], 
-  date  = info_fields[1][1],
-  scale = info_fields[2][1],
-  link  = "furkanturan.com/listen/index.html?sheet="+
-          info_fields[0][1].replace(" ", "\_"),
+  name  = settings['title'], 
+  date  = settings['date'], 
+  scale = settings['scale'], 
+  link  = "music.furkanturan.com/listen.html?sheet="+
+          settings['title'].replace(" ", "\_"),
   files = ','.join(svgfiles))
 
 f = open(abcfile+".tex", "w")

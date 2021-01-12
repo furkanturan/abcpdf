@@ -8,20 +8,26 @@ It also produces input file for the [abclisten](https://github.com/furkanturan/a
 
 * Type a music sheet using ABC notation, and add it to the main directory with `.abc` extension.
 
-* Provide extra info in a file having the same name as the `.abc` file, but with an `.info` extention. For now, only several info fields are supported.
+* Provide extra json in a file having the same name as the `.abc` file. For now, the following information fields are supported.
     
-  * A title to the PDF.
-  * The date it is added. For me, this is the date, on which I started practicing the specific song.
-  * A scaling factor for the sheet in the PDF file.
-  * If the `.abc` file does not set the tempo, this field can provide the tempo information. This will not be printed to the TEX file, but will be used if the file is compiled for the [abclisten](https://github.com/furkanturan/abclisten).
+  * **title:** A title to the PDF.
+  * **date:** The date it is added. For me, this is the date, on which I started practicing the specific song.
+  * **scale:** A scaling factor for the sheet in the PDF file.
+  * **size:** A size, like font size for the size of the note in the PDF file.
+  * **tempo:** If the `.abc` file does not set the tempo, this field can provide the tempo information. This will not be printed to the TEX file, but will be used if the file is compiled for the [abclisten](https://github.com/furkanturan/abclisten).
+  * **share:** A boolean field to dictate if the file will be shared or not. For example, it might be a copyrighted song. If sharing is disabled, the file will be exempted from [abclisten](https://github.com/furkanturan/abclisten), and it will be added to `.gitignore` to disable committing it.
 
-  You can create the info file as:
+  An example `.json` file is as follows:
 
   ```
-  title=Name of the song
-  date=1 January 2020
-  scale=0.80
-  tempo=1/4=120
+  {
+    "title" : "Name of the song",
+    "date"  : "1 January 2020",
+    "scale" : 0.82,
+    "size"  : 0.75,
+    "tempo" : "1/4=120",
+    "share" : true
+  }
   ```
 
 * In the next step you can execute the `./compile` script. You should execute it with an argument explained below:
@@ -37,3 +43,4 @@ It uses:
 * `inkscape` to convert `svg` images to `pdf`
 * `python3` to prepare `tex` files that include the `pdf` sheet input
 * `pdflatex` to compile the `tex` files into `pdf` sheet
+* `jq` to parse `.json` files

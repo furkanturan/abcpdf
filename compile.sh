@@ -8,7 +8,7 @@ if [ -z ${1} ]; then
   echo "Use with an argument"
   echo "  $ ./compile.sh songname   for compiling a single file"
   echo "  $ ./compile.sh -all       for compiling all files"
-  echo "  $ ./compile.sh -listener  for compiling all files to abclisten"
+  echo "  $ ./compile.sh -abclisten for compiling all files to abclisten"
   exit 1
   
 elif [ "$1" == "-abclisten" ]; then
@@ -38,24 +38,43 @@ if [ $getAllFiles == 1 ]; then
   for abc_file in *.abc; do
     filename=$(basename -- "$abc_file")
     file="${filename%.*}"
-    echo "-> "${file}
 
-    if [  -f "${file}.info" ]; then
-      rm -f ${file}.pdf
-      cp ${file}.* tmp/.    
+    if [  -f "${file}.json" ]; then
+
+      # if sharing of this file is not wished, add the file to .gitignore
+      share=$(jq .share ${file}.json)
+      if [ $share == false ]; then  
+        echo "${file}.*" >> .gitignore
+      fi
+
+      # if this script is executed for abclisten, 
+      # get only the files for which sharing is enables
+      if [ $operation == 1 ]; then
+        if [ $share == true ]; then
+          cp ${file}.* tmp/.
+          echo "-> "${file}
+        fi
+      # if this cript is executed for PDFs
+      # get all the files, and delete any existing PDFs of them.
+      elif [ $operation == 2 ]; then
+        rm -f ${file}.pdf
+        cp ${file}.* tmp/.
+        echo "-> "${file}
+      fi
+
     else
-      echo "File Error: ${file}.info for ${file}.abc does not exist!"
+      echo "File Error: ${file}.json for ${file}.abc does not exist!"
       fileError=1
     fi
   done
 
 else
   if [ -f "${1}.abc" ]; then
-    if [ -f "${1}.info" ]; then
+    if [ -f "${1}.json" ]; then
       rm -f ${1}.pdf
       cp ${1}.* tmp/.
     else
-      echo "File Error: ${1}.info for ${1}.abc does not exist!"
+      echo "File Error: ${1}.json for ${1}.abc does not exist!"
       fileError=1
     fi
   else

@@ -1,5 +1,6 @@
 import sys
 import glob, os
+import json
 from string import Template
 
 ################################################################################
@@ -10,14 +11,6 @@ os.chdir("./")
 for file in glob.glob("*.abc"):
   abcfiles.append(file[:-4])
 
-infofiles = []
-os.chdir("./")
-for file in glob.glob("*.info"):
-  infofiles.append(file[:-5])
-
-if (abcfiles != infofiles):
-  print("Error. ABC and INFO files do not match!");
-
 ################################################################################
 # Create two arrays for the songs.js
 
@@ -25,18 +18,11 @@ sheetTitles = []
 sheetTempos = []
 sheetABCs   = []
 
-for file in infofiles:
-  f = open(file+".info", "r")
-  tempoIsFound=0
-  for line in f.readlines():
-    if line.find("title=")!=-1:
-      sheetTitles.append(line[6:].strip())
-    if line.find("tempo=")!=-1:
-      sheetTempos.append(line[6:].strip())
-      tempoIsFound=1
-  if tempoIsFound==0:
-    sheetTempos.append("")
-  f.close()
+for file in abcfiles:
+  with open(file+".json") as f:
+    settings = json.load(f)
+    sheetTitles.append(settings['title'])
+    sheetTempos.append(settings['tempo'])
 
 for file in abcfiles:
   f = open(file+".abc", "r")

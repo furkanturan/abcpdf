@@ -2,8 +2,9 @@ echo "ABC -> SVG"
 for abc_file in *.abc; do
   filename=$(basename -- "$abc_file")
   file="${filename%.*}"
-
-  abcm2ps -v ${file}.abc -O tmp_${file}
+  size=$(jq .size $file.json)
+  
+  abcm2ps -v ${file}.abc -s $size -O tmp_${file}
 done
 
 echo "SVG -> PDFTEX"
