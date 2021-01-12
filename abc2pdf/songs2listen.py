@@ -52,7 +52,7 @@ for sheetIndex, sheet in enumerate(sheetABCs, start=0):
 songs = "var sheetABCs = [\n"
 for sheet in sheetABCs:
   for line in sheet:
-    songs += "  \"" + line[:-1] + "\\n\" +" + "\n"
+    songs += "  \"" + line.strip() + "\\n\" +" + "\n"
   songs = songs[:-6] + "\",\n\n"
 songs = songs[:-3] + "\n];"
 
