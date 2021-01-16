@@ -31,7 +31,7 @@ res = tmplate.substitute(
   name  = settings['title'], 
   date  = settings['date'], 
   scale = settings['scale'], 
-  link  = "music.furkanturan.com/listen.html?sheet="+
+  link  = "music.furkanturan.com/listen/?sheet="+
           settings['title'].replace(" ", "\_"),
   files = ','.join(svgfiles))
 
